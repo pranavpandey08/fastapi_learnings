@@ -2,9 +2,11 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: local-docker-image-registry
+  namespace: book-author
   labels:
     app: registry
 spec:
+  hostNetwork: true
   containers:
   - name: registry
     image: registry:2
