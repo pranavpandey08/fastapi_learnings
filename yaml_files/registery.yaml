@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: local-docker_image_registry
+  name: local-docker-image-registry
   labels:
     app: registry
 spec:
