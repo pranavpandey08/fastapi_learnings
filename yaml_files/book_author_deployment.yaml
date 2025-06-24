@@ -16,7 +16,7 @@ spec:
       restartPolicy: Always
       initContainers:
       - name: alembic-migrations
-        image: local-registry.book-author.svc.cluster.local:5000/book_author_app:latest
+        image: localhost:5000/book_author_app:latest
         imagePullPolicy: IfNotPresent
         command: [ "alembic", "upgrade", "head" ]
         envFrom:
@@ -24,7 +24,7 @@ spec:
               name: book-author-secret
       containers:
       - name: book-author-app
-        image: local-registry.book-author.svc.cluster.local:5000/book_author_app:latest
+        image: localhost:5000/book_author_app:latest
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8000
