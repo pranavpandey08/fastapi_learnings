@@ -3,6 +3,9 @@ from logging.config import fileConfig
 from database import Base
 from database import SQLALCHEMY_DATABASE_URL
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
