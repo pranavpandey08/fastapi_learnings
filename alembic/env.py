@@ -1,3 +1,4 @@
+import os
 from logging.config import fileConfig
 from database import Base
 from database import SQLALCHEMY_DATABASE_URL
@@ -42,7 +43,14 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    url = (
+        f"mysql+pymysql://{os.getenv('DB_USERNAME')}:"
+        f"{os.getenv('DB_PASSWORD')}@"
+        f"{os.getenv('DB_HOST')}:"
+        f"{os.getenv('DB_PORT')}/"
+        f"{os.getenv('DB_NAME')}"
+    )
+
     context.configure(
         url=url,
         target_metadata=target_metadata,
