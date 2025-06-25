@@ -18,7 +18,7 @@ spec:
       - name: alembic-migrations
         image: localhost:5000/book_author_app:latest
         imagePullPolicy: IfNotPresent
-        command: [ "alembic", "upgrade", "head" ]
+        command: ["sh", "-c", "env && sleep 3600"]
         envFrom:
           - secretRef:
               name: book-author-secret
