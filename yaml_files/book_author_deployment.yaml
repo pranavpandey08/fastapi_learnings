@@ -14,14 +14,6 @@ spec:
         app: book-author-app
     spec:
       restartPolicy: Always
-      initContainers:
-      - name: alembic-migrations
-        image: localhost:5000/book_author_app:latest
-        imagePullPolicy: IfNotPresent
-        command: [ "alembic", "upgrade", "head" ]
-        envFrom:
-          - secretRef:
-              name: book-author-secret
       containers:
       - name: book-author-app
         image: localhost:5000/book_author_app:latest
