@@ -14,15 +14,17 @@ DB_HOST = os.getenv("DB_HOST")
 DB_NAME = os.getenv("DB_NAME")
 DB_PORT = os.getenv("DB_PORT")
 
-encoded_password = urllib.parse.quote(DB_PASSWORD)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{DB_USERNAME}:{encoded_password}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+# encoded_password = urllib.parse.quote(DB_PASSWORD)
+
+# SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{DB_USERNAME}:{encoded_password}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 print("Before printing BD URL")
-print(SQLALCHEMY_DATABASE_URL)
+print(DATABASE_URL)
 print("After printing BD URL")
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 

@@ -16,12 +16,12 @@ from models import *
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
-config = context.config
+def get_url():
+    return os.getenv("DATABASE_URL")
 
-config.set_main_option(
-    "sqlalchemy.url",
-    f"mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-)
+
+config = context.config
+config.set_main_option("sqlalchemy.url", get_url())
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
